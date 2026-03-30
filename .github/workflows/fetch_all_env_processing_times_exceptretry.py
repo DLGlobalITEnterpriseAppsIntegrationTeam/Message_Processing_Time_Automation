@@ -48,42 +48,16 @@ if not all(required_secrets):
 # ------------------------
 
 #ORIGINAL Start
-# today_utc = datetime.utcnow().date()
-# fixed_utc_end_time = datetime.combine(today_utc, datetime.min.time()).replace(hour=10, minute=30)
+today_utc = datetime.utcnow().date()
+fixed_utc_end_time = datetime.combine(today_utc, datetime.min.time()).replace(hour=10, minute=30)
 
-# start_time = fixed_utc_end_time - timedelta(days=1)
-# end_time = fixed_utc_end_time
-
-# start_str = start_time.strftime("%Y-%m-%dT%H:%M:%S")
-# end_str = end_time.strftime("%Y-%m-%dT%H:%M:%S")
-
-#Original END 
-
-
-#Custimise
-
-# DATE CONFIGURATION - Change this for each run
-# ------------------------
-# Format: YYYY-MM-DD (will automatically create 24-hour window)
-EXECUTION_DATE = "2026-03-27"  # Change this date for each execution
-
-# Convert to 24-hour window (4:00 PM IST to 4:00 PM IST next day)
-# IST 4:00 PM = UTC 10:30 AM
-execution_date_obj = datetime.strptime(EXECUTION_DATE, "%Y-%m-%d")
-start_time = execution_date_obj.replace(hour=10, minute=30, second=0)
-end_time = start_time + timedelta(days=1)
+start_time = fixed_utc_end_time - timedelta(days=1)
+end_time = fixed_utc_end_time
 
 start_str = start_time.strftime("%Y-%m-%dT%H:%M:%S")
 end_str = end_time.strftime("%Y-%m-%dT%H:%M:%S")
 
-# ------------------------
-# LOG EXECUTION DATE RANGE
-# ------------------------
-print("=" * 80)
-print(f"EXECUTION DATE: {EXECUTION_DATE}")
-print(f"TIME RANGE (UTC): {start_str} to {end_str}")
-print(f"TIME RANGE (IST): {EXECUTION_DATE} 4:00 PM to {(execution_date_obj + timedelta(days=1)).strftime('%Y-%m-%d')} 4:00 PM")
-print("=" * 80)
+
 
 
 # Final payload holder
